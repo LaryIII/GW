@@ -14,7 +14,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-var SingerImgs = React.createClass({
+var MyPics = React.createClass({
   getInitialState: function(){
     var items = [];
     return {
@@ -44,4 +44,4 @@ var styles = StyleSheet.create({
 });
 
 
-module.exports = SingerImgs;
+module.exports = MyPics;

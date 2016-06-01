@@ -34,7 +34,36 @@ var Faxian = React.createClass({
     return (
       <View style={styles.bigcontainer}>
         <ScrollView style={styles.container}>
-
+          <View style={styles.line}>
+            <View style={styles.td1}>
+              <Image style={styles.icon} resizeMode={'contain'} source={require('image!birthday')}></Image>
+              <Text style={styles.text}>生日</Text>
+            </View>
+            <View style={styles.td2}>
+              <Image style={styles.icon} resizeMode={'contain'} source={require('image!place')}></Image>
+              <Text style={styles.text}>场所</Text>
+            </View>
+          </View>
+          <View style={styles.line}>
+            <View style={styles.td1}>
+              <Image style={styles.icon} resizeMode={'contain'} source={require('image!luyinpeng')}></Image>
+              <Text style={styles.text}>录音棚</Text>
+            </View>
+            <View style={styles.td2}>
+              <Image style={styles.icon} resizeMode={'contain'} source={require('image!techtie')}></Image>
+              <Text style={styles.text}>技术贴</Text>
+            </View>
+          </View>
+          <View style={styles.line}>
+            <View style={styles.td1}>
+              <Image style={styles.icon} resizeMode={'contain'} source={require('image!liangge')}></Image>
+              <Text style={styles.text}>靓歌</Text>
+            </View>
+            <View style={styles.td2}>
+              <Image style={styles.icon} resizeMode={'contain'} source={require('image!school')}></Image>
+              <Text style={styles.text}>学校</Text>
+            </View>
+          </View>
         </ScrollView>
       </View>
     );
@@ -44,142 +73,41 @@ var Faxian = React.createClass({
 var styles = StyleSheet.create({
   bigcontainer:{
     flex:1,
+    backgroundColor:'#000154',
   },
   container:{
     flex:1,
-    marginTop:-5,
+    marginTop:20,
   },
-  navigatorx:{
-    backgroundColor:'#f3ea85',
-    height:64,
-    paddingTop:20,
-  },
-  city:{
+  line:{
     flex:1,
     flexDirection:'row',
+  },
+  td1:{
+    width:120,
+    height:120,
+    borderWidth:0.5,
+    borderColor:'#fff',
     alignItems:'center',
-    justifyContent:'center',
-    marginTop:10,
+    marginLeft:(Dimensions.get('window').width-240)/3,
+    marginBottom:30,
   },
-  citytext:{
-    fontSize:17,
-    fontWeight:'bold',
-    textAlign:'center',
-    marginRight:6,
+  td2:{
+    width:120,
+    height:120,
+    borderWidth:0.5,
+    borderColor:'#fff',
+    alignItems:'center',
+    marginLeft:(Dimensions.get('window').width-240)/3,
+    marginBottom:30,
   },
-  down:{
-    width:4,
-    height:5,
-  },
-  itemRow:{
-    flexDirection:'row',
+  icon:{
+    marginTop:20,
     marginBottom:20,
   },
-  banner:{
-    flex:1,
-    borderRadius:4,
-    width:Dimensions.get('window').width-30,
-    height:180,
-  },
-  wrapper: {
-    height:180,
-  },
-  slide1: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-    borderRadius:4,
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:15,
-    height:180,
-  },
-  slide2: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-    borderRadius:4,
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:15,
-    height:180,
-  },
-  slide3: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-    borderRadius:4,
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:15,
-    height:180,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-  tasklist:{
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:60,
-  },
-  tasktitlebox:{
-    flex:1,
-  },
-  titleline:{
-    flex:1,
-    color:'#c0c0c0',
-    textAlign:'center',
-    fontSize:12
-  },
-  item:{
-    flex:1,
-    height:180,
-    marginTop:15,
-    alignItems:'center',
-    backgroundColor:'#eee',
-    borderRadius:4,
-  },
-  itemtext:{
-    position:'absolute',
-    top:0,
-    left:0,
-    backgroundColor:'rgba(0,0,0,0)',
-    width:Dimensions.get('window').width-30,
-    height:180,
-    alignItems:'center',
-  },
-  itemimg:{
-    flex:1,
-    borderRadius:4,
-    width:Dimensions.get('window').width - 30,
-    height:180,
-  },
-  itemtitle:{
-    fontSize:15,
+  text:{
+    fontSize:18,
     color:'#fff',
-    textAlign:'center',
-    marginTop:70,
-  },
-  itemprice:{
-    fontSize:12,
-    color:'#fff',
-    textAlign:'center',
-    marginTop:10,
-  },
-  itemnum:{
-    fontSize:12,
-    color:'#fff',
-    textAlign:'center',
-    marginTop:45,
-  },
-  em:{
-    color:'#f0e983',
   }
 });
 

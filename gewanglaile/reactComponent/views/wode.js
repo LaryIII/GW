@@ -5,6 +5,13 @@
 import React, { Component } from 'react';
 import Util from './utils';
 import Service from './service';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
+import MyZuopin from './wode/myzuopin';
+import MyHuodong from './wode/myhuodong';
+import MyFans from './wode/myfans';
+import MyFocus from './wode/myfocus';
+import MyPics from './wode/mypics';
+import JRWTabBar from './common/jrwtabbar';
 import {
   View,
   Text,
@@ -33,9 +40,26 @@ var Wode = React.createClass({
 
     return (
       <View style={styles.bigcontainer}>
-        <ScrollView style={styles.container}>
-
-        </ScrollView>
+        <View style={styles.header}>
+          <View style={styles.avatar}>
+            <Image style={styles.icon} resizeMode={'contain'} source={require('image!circle_avatar')}></Image>
+          </View>
+          <View style={styles.info}>
+            <Text style={styles.name}>陈蕊 ♀ (881823)</Text>
+            <Text style={styles.locate}>南京 双鱼座</Text>
+            <Text style={styles.desc}>生如夏花之绚烂，死如秋叶之静美</Text>
+          </View>
+          <View style={styles.guanzhu}>
+            <Text style={styles.guanzhutext}>已关注</Text>
+          </View>
+        </View>
+        <ScrollableTabView style={styles.scroll} renderTabBar={() =><JRWTabBar />}>
+          <MyZuopin tabLabel="作品" />
+          <MyHuodong tabLabel="活动" />
+          <MyFans tabLabel="粉丝" />
+          <MyFocus tabLabel="关注" />
+          <MyPics tabLabel="相册" />
+        </ScrollableTabView>
       </View>
     );
   },
@@ -44,142 +68,61 @@ var Wode = React.createClass({
 var styles = StyleSheet.create({
   bigcontainer:{
     flex:1,
+    backgroundColor:'#000154',
   },
-  container:{
-    flex:1,
-    marginTop:-5,
-  },
-  navigatorx:{
-    backgroundColor:'#f3ea85',
-    height:64,
-    paddingTop:20,
-  },
-  city:{
-    flex:1,
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'center',
-    marginTop:10,
-  },
-  citytext:{
-    fontSize:17,
-    fontWeight:'bold',
-    textAlign:'center',
-    marginRight:6,
-  },
-  down:{
-    width:4,
-    height:5,
-  },
-  itemRow:{
-    flexDirection:'row',
-    marginBottom:20,
-  },
-  banner:{
-    flex:1,
-    borderRadius:4,
-    width:Dimensions.get('window').width-30,
-    height:180,
-  },
-  wrapper: {
-    height:180,
-  },
-  slide1: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-    borderRadius:4,
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:15,
-    height:180,
-  },
-  slide2: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-    borderRadius:4,
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:15,
-    height:180,
-  },
-  slide3: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-    borderRadius:4,
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:15,
-    height:180,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-  tasklist:{
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:60,
-  },
-  tasktitlebox:{
-    flex:1,
-  },
-  titleline:{
-    flex:1,
-    color:'#c0c0c0',
-    textAlign:'center',
-    fontSize:12
-  },
-  item:{
-    flex:1,
-    height:180,
-    marginTop:15,
-    alignItems:'center',
-    backgroundColor:'#eee',
-    borderRadius:4,
-  },
-  itemtext:{
-    position:'absolute',
-    top:0,
-    left:0,
+  scroll:{
+    marginTop:5,
     backgroundColor:'rgba(0,0,0,0)',
-    width:Dimensions.get('window').width-30,
-    height:180,
-    alignItems:'center',
   },
-  itemimg:{
+  header:{
+    flexDirection:'row',
+    paddingTop:10,
+    paddingLeft:15,
+    paddingRight:15,
+  },
+  avatar:{
+    marginRight:10,
+  },
+  icon:{
+    width:75,
+    height:75,
+    borderRadius:37.5,
+  },
+  info:{
+    marginTop:5,
+    width:Dimensions.get('window').width-30-60,
+    height:75,
+  },
+  name:{
     flex:1,
-    borderRadius:4,
-    width:Dimensions.get('window').width - 30,
-    height:180,
-  },
-  itemtitle:{
     fontSize:15,
     color:'#fff',
-    textAlign:'center',
-    marginTop:70,
   },
-  itemprice:{
-    fontSize:12,
+  locate:{
+    flex:1,
+    fontSize:13,
     color:'#fff',
-    textAlign:'center',
-    marginTop:10,
   },
-  itemnum:{
-    fontSize:12,
+  desc:{
+    flex:1,
+    fontSize:13,
+    color:'#fff'
+  },
+  guanzhu:{
+    position:'absolute',
+    top:20,
+    right:15,
+    borderRadius:3,
+    borderWidth:1,
+    borderColor:'#fff',
+    paddingTop:3,
+    paddingBottom:3,
+    paddingLeft:6,
+    paddingRight:6,
+  },
+  guanzhutext:{
     color:'#fff',
-    textAlign:'center',
-    marginTop:45,
-  },
-  em:{
-    color:'#f0e983',
+    fontSize:12,
   }
 });
 

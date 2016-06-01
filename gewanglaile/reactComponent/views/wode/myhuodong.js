@@ -1,46 +1,38 @@
-/**
- * Created by vczero on 15/7/12.
- */
+'use strict'
 
 import React, { Component } from 'react';
-import Util from './utils';
-import Service from './service';
+import Util from './../utils';
+import Service from './../service';
 import {
   View,
   Text,
-  ScrollView,
   StyleSheet,
   Image,
   Dimensions,
   TouchableOpacity,
   ListView,
-  ActivityIndicatorIOS,
-  AsyncStorage,
-  RefreshControl,
+  TouchableHighlight,
   SegmentedControlIOS,
+  ScrollView,
 } from 'react-native';
 
-var Huodong = React.createClass({
+var MyHuodong = React.createClass({
   getInitialState: function(){
+    var items = [];
     return {
-
-    }
+      items: items,
+    };
   },
-  componentDidMount: function() {
-
-  },
-
-  render: function(){
-
+  render() {
     return (
       <View style={styles.bigcontainer}>
         <View style={styles.segment}>
-          <SegmentedControlIOS values={['全国', '南京','马鞍山']} />
+          <SegmentedControlIOS values={['已报名', '已发布']} />
         </View>
         <ScrollView style={styles.container}>
           <View style={styles.item}>
             <View style={styles.left}>
-              <Image resizeMode={'contain'} style={styles.itemimg} source={require('./../res/common/ktv.jpg')}>
+              <Image resizeMode={'contain'} style={styles.itemimg} source={require('./../../res/common/ktv.jpg')}>
                 <View style={styles.label}>
                   <Text style={styles.labeltext}>已发布</Text>
                 </View>
@@ -48,40 +40,44 @@ var Huodong = React.createClass({
               <Text style={styles.num}>30人已报名</Text>
             </View>
             <View style={styles.right}>
-              <View style={styles.line}><Text>南京好声音晋级赛第一场</Text></View>
-              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!locate_normal')}></Image><Text>集合:<Text>孵鹰大厦楼下</Text></Text></View>
-              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!time')}></Image><Text>时间:<Text>2016年1月1日</Text></Text></View>
-              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!zuzhizhe')}></Image><Text>组织者:<Text>刘宝仲</Text></Text></View>
+              <View style={styles.line}><Text style={[styles.whitetext,{fontSize:15}]}>南京好声音晋级赛第一场</Text></View>
+              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!locate_normal')}></Image><Text style={styles.whitetext}>集合:<Text>孵鹰大厦楼下</Text></Text></View>
+              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!time')}></Image><Text style={styles.whitetext}>时间:<Text>2016年1月1日</Text></Text></View>
+              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!zuzhizhe')}></Image><Text style={styles.whitetext}>组织者:<Text>刘宝仲</Text></Text></View>
             </View>
           </View>
         </ScrollView>
       </View>
     );
   },
+
 });
 
 var styles = StyleSheet.create({
   bigcontainer:{
     flex:1,
+    backgroundColor:'rgba(0,0,0,0)',
   },
   segment:{
     marginTop:5,
-    marginLeft:10,
+    marginLeft:15,
     marginBottom:10,
-    marginRight:10,
+    marginRight:15,
   },
   container:{
 
   },
   item:{
+    marginLeft:15,
+    marginRight:15,
+    borderRadius:4,
+    borderWidth:1,
+    borderColor:'#fff',
     flex:1,
     flexDirection:'row',
     borderBottomWidth:0.5,
     borderBottomColor:'#999',
-    paddingLeft:15,
-    paddingRight:15,
-    paddingTop:5,
-    paddingBottom:5,
+    padding:6,
   },
   left:{
     width:105,
@@ -106,12 +102,12 @@ var styles = StyleSheet.create({
     fontSize:14,
   },
   num:{
-
+    color:'#fff',
     fontSize:12,
   },
   right:{
-    width:Dimensions.get('window').width-30-105-20,
-    marginLeft:20,
+    width:Dimensions.get('window').width-40-105-5,
+    marginLeft:5,
     flex:1,
     height:100,
   },
@@ -123,8 +119,12 @@ var styles = StyleSheet.create({
     width:18,
     height:18,
     marginRight:10,
+  },
+  whitetext:{
+    color:'#fff',
+    fontSize:13
   }
-
 });
 
-module.exports = Huodong;
+
+module.exports = MyHuodong;
