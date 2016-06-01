@@ -48,7 +48,7 @@ var gewanglaile = React.createClass({
       // title = '';
       // display = true;
       // data = this.state.data;
-      barTintColor = '#f3ea85';
+      barTintColor = '#f9f9f9';
     }
     if(title === '活动'){
       // display = true;
@@ -56,7 +56,7 @@ var gewanglaile = React.createClass({
       barTintColor = '#f9f9f9';
     }
     if(title === '听歌'){
-      barTintColor = '#fff';
+      barTintColor = '#f9f9f9';
     }
     if(title === '发现'){
       // display = true;
