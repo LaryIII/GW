@@ -34,7 +34,7 @@ var KingImgs = React.createClass({
 var styles = StyleSheet.create({
   bigcontainer:{
     flex:1,
-    backgroundColor:'#f9f9f9',
+    backgroundColor:'#000154',
   },
   itemimg:{
     width:(Dimensions.get('window').width-30)/2,

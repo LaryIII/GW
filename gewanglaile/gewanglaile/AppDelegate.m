@@ -52,7 +52,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) { // 判断是否是IOS7
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
         [application setStatusBarStyle:UIStatusBarStyleLightContent];//黑体白字
-        [application setStatusBarStyle:UIStatusBarStyleDefault];//黑体黑字
+        [application setStatusBarStyle:UIStatusBarStyleLightContent];//黑体黑字
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

@@ -56,11 +56,11 @@ var Xiutu = React.createClass({
 var styles = StyleSheet.create({
   bigcontainer:{
     flex:1,
-    backgroundColor:'#fff',
+    backgroundColor:'#000154',
   },
   container:{
     flex:1,
-    backgroundColor:'#fff',
+    backgroundColor:'#000154',
   },
 });
 

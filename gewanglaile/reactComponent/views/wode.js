@@ -12,6 +12,7 @@ import MyFans from './wode/myfans';
 import MyFocus from './wode/myfocus';
 import MyPics from './wode/mypics';
 import JRWTabBar from './common/jrwtabbar';
+import Setting from './wode/setting';
 import {
   View,
   Text,
@@ -35,11 +36,33 @@ var Wode = React.createClass({
   componentDidMount: function() {
 
   },
-
+  _gotoSetting:function(){
+    var that = this;
+    console.log(1);
+    that.props.navigator.push({
+      title: '设置',
+      component: Setting,
+      navigationBarHidden:false,
+      // backButtonTitle: "返回",
+      // backButtonIcon: require('image!back'),
+      leftButtonTitle: "返回",
+      leftButtonIcon:require('image!back'),
+      onLeftButtonPress: ()=>that.props.navigator.pop(),
+    });
+  },
   render: function(){
-
     return (
       <View style={styles.bigcontainer}>
+        <View style={styles.content}>
+          <View style={styles.text1}>
+            <Text style={styles.bold1}>我的</Text>
+          </View>
+          <TouchableOpacity onPress={this._gotoSetting} style={styles.settingbtn}>
+            <View style={styles.setting}>
+              <Image style={styles.icon1} resizeMode={'contain'} source={require('image!setting')}></Image>
+            </View>
+          </TouchableOpacity>
+        </View>
         <View style={styles.header}>
           <View style={styles.avatar}>
             <Image style={styles.icon} resizeMode={'contain'} source={require('image!circle_avatar')}></Image>
@@ -123,7 +146,46 @@ var styles = StyleSheet.create({
   guanzhutext:{
     color:'#fff',
     fontSize:12,
-  }
+  },
+  content: {
+    paddingTop: 15,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width:Dimensions.get('window').width,
+  },
+  settingbtn:{
+    flex:1,
+    position:'absolute',
+    justifyContent: 'center',
+    left:10,
+    top:7,
+    width:50,
+    height:50,
+  },
+  setting:{
+
+  },
+  icon1:{
+    flex:1,
+    width:21,
+    height:21,
+  },
+  canceltext:{
+    color:'#666',
+    fontSize:15,
+  },
+  text1: {
+    width:Dimensions.get('window').width,
+    alignItems: 'center',
+  },
+  bold1: {
+    fontSize: 16,
+    color: '#fff',
+  },
+  info1: {
+    fontSize: 12,
+  },
 });
 
 module.exports = Wode;

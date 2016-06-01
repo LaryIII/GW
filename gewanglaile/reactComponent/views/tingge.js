@@ -44,6 +44,7 @@ var Tingge = React.createClass({
 var styles = StyleSheet.create({
   bigcontainer:{
     flex:1,
+    backgroundColor:'#000154',
   },
   container:{
     flex:1,

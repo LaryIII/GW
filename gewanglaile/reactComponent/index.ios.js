@@ -43,37 +43,37 @@ var gewanglaile = React.createClass({
   _addNavigator: function(component, title){
     var data = null;
     var display = false;
-    var barTintColor = '#f9f9f9';
+    var barTintColor = '#000036';
     if(title === '秀图'){
       // title = '';
       // display = true;
       // data = this.state.data;
-      barTintColor = '#f9f9f9';
+      // barTintColor = '#f9f9f9';
     }
     if(title === '活动'){
       // display = true;
       // title = '';
-      barTintColor = '#f9f9f9';
+      // barTintColor = '#f9f9f9';
     }
     if(title === '听歌'){
-      barTintColor = '#f9f9f9';
+      // barTintColor = '#f9f9f9';
     }
     if(title === '发现'){
       // display = true;
       // title = '';
-      barTintColor = '#f9f9f9';
+      // barTintColor = '#f9f9f9';
     }
     if(title === '我的'){
-      // display = true;
-      // title = '';
-      barTintColor = '#f9f9f9';
+      display = true;
+      title = '';
+      // barTintColor = '#f9f9f9';
     }
     return <NavigatorIOS
       ref='nav'
       style={{flex:1}}
       barTintColor={barTintColor}
-      titleTextColor="#333"
-      tintColor="#333"
+      titleTextColor="#fff"
+      tintColor="#fff"
       translucent={false}
       navigationBarHidden={display}
       initialRoute={{
@@ -89,8 +89,8 @@ var gewanglaile = React.createClass({
   render: function() {
     return (
       <TabBarIOS
-        tintColor="#51a7ff"
-        barTintColor="white">
+        tintColor="#f1df9f"
+        barTintColor="#010012">
         <TabBarIOS.Item
           icon={require('image!xiutu_normal')}
           title=""
@@ -163,7 +163,7 @@ var styles = StyleSheet.create({
     margin: 50,
   },
   tabbarItem:{
-    marginTop:-2
+    marginTop:-2,
   }
 });
 

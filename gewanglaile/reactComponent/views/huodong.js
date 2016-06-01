@@ -48,10 +48,10 @@ var Huodong = React.createClass({
               <Text style={styles.num}>30人已报名</Text>
             </View>
             <View style={styles.right}>
-              <View style={styles.line}><Text>南京好声音晋级赛第一场</Text></View>
-              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!locate_normal')}></Image><Text>集合:<Text>孵鹰大厦楼下</Text></Text></View>
-              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!time')}></Image><Text>时间:<Text>2016年1月1日</Text></Text></View>
-              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!zuzhizhe')}></Image><Text>组织者:<Text>刘宝仲</Text></Text></View>
+              <View style={styles.line}><Text style={[styles.whitetext,{fontSize:15,}]}>南京好声音晋级赛第一场</Text></View>
+              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!locate_normal')}></Image><Text style={styles.whitetext}>集合:<Text>孵鹰大厦楼下</Text></Text></View>
+              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!time')}></Image><Text style={styles.whitetext}>时间:<Text>2016年1月1日</Text></Text></View>
+              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!zuzhizhe')}></Image><Text style={styles.whitetext}>组织者:<Text>刘宝仲</Text></Text></View>
             </View>
           </View>
         </ScrollView>
@@ -63,6 +63,7 @@ var Huodong = React.createClass({
 var styles = StyleSheet.create({
   bigcontainer:{
     flex:1,
+    backgroundColor:'#000154',
   },
   segment:{
     marginTop:5,
@@ -106,7 +107,7 @@ var styles = StyleSheet.create({
     fontSize:14,
   },
   num:{
-
+    color:'#fff',
     fontSize:12,
   },
   right:{
@@ -123,6 +124,10 @@ var styles = StyleSheet.create({
     width:18,
     height:18,
     marginRight:10,
+  },
+  whitetext:{
+    color:'#fff',
+    fontSize:13,
   }
 
 });
