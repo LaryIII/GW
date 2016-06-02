@@ -12,7 +12,7 @@ import MyFans from './wode/myfans';
 import MyFocus from './wode/myfocus';
 import MyPics from './wode/mypics';
 import JRWTabBar from './common/jrwtabbar';
-import Setting from './wode/setting';
+import Info from './wode/info';
 import {
   View,
   Text,
@@ -40,8 +40,8 @@ var Wode = React.createClass({
     var that = this;
     console.log(1);
     that.props.navigator.push({
-      title: '设置',
-      component: Setting,
+      title: '个人信息',
+      component: Info,
       navigationBarHidden:false,
       // backButtonTitle: "返回",
       // backButtonIcon: require('image!back'),

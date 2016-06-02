@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Util from './../utils';
 import Service from './../service';
 import Feedback from './feedback';
+import Setting from './setting';
 import {
   View,
   Text,
@@ -17,7 +18,7 @@ import {
   AsyncStorage,
 } from 'react-native';
 
-var Setting = React.createClass({
+var Info = React.createClass({
   getInitialState: function(){
     var userinfo = null;
     return {
@@ -61,6 +62,18 @@ var Setting = React.createClass({
       onLeftButtonPress: ()=>this.props.navigator.pop(),
     });
   },
+  _gotoSetting:function(){
+    this.props.navigator.push({
+      title: '设置',
+      component: Setting,
+      navigationBarHidden:false,
+      // backButtonTitle: "返回",
+      // backButtonIcon: require('image!back'),
+      leftButtonTitle: "返回",
+      leftButtonIcon:require('image!back'),
+      onLeftButtonPress: ()=>this.props.navigator.pop(),
+    });
+  },
   _quit: function(){
     var that = this;
     Util.get(Service.host + Service.logout, {sessionKey:userinfo.sessionKey}, function(data){
@@ -80,55 +93,70 @@ var Setting = React.createClass({
   },
 
   render: function(){
-    var quitbtn = [];
-    // if(this.state.userinfo && this.state.userinfo.sessionKey){
-      quitbtn.push(
-        <TouchableOpacity onPress={this._quit}>
-          <View style={styles.applybtn}>
-            <View style={styles.bluebtn}>
-              <Text style={styles.bluebtntext}>安全退出</Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-      );
-    // }
     return (
       <View style={styles.bigcontainer}>
         <ScrollView style={styles.container}>
           <View style={styles.wrapper}>
-            <TouchableOpacity onPress={this._gotoSM}>
+          <TouchableOpacity>
+            <View style={[styles.bigitem, {flexDirection:'row'}]}>
+              <Text style={[styles.font,{flex:1}]}>头像</Text>
+              <Image style={styles.avatar} resizeMode={'contain'} source={require('image!circle_avatar')}></Image>
+              <Image style={styles.bigarrow} resizeMode={'contain'} source={require('image!next')}></Image>
+            </View>
+          </TouchableOpacity>
+            <TouchableOpacity>
               <View style={[styles.item, {flexDirection:'row'}]}>
-                <Text style={[styles.font,{flex:1}]}>版本声明</Text>
+                <Text style={[styles.font,{flex:1}]}>用户名</Text>
+                <Text style={styles.desc}>13236567035</Text>
                 <Image style={styles.arrow} resizeMode={'contain'} source={require('image!next')}></Image>
               </View>
             </TouchableOpacity>
             <TouchableOpacity>
               <View style={[styles.item, {flexDirection:'row'}]}>
-                <Text style={[styles.font,{flex:1}]}>新版本检测</Text>
-                <Text style={styles.desc}>V1.1</Text>
-                <Image style={styles.arrow} resizeMode={'contain'} source={require('image!next')}></Image>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={{marginTop:15,}}>
-              <View style={[styles.item, {flexDirection:'row'}]}>
-                <Text style={[styles.font,{flex:1}]}>关于我们</Text>
+                <Text style={[styles.font,{flex:1}]}>昵称</Text>
+                <Text style={styles.desc}>豆豆</Text>
                 <Image style={styles.arrow} resizeMode={'contain'} source={require('image!next')}></Image>
               </View>
             </TouchableOpacity>
             <TouchableOpacity>
               <View style={[styles.item, {flexDirection:'row'}]}>
-                <Text style={[styles.font,{flex:1}]}>常见问题</Text>
+                <Text style={[styles.font,{flex:1}]}>性别</Text>
+                <Text style={styles.desc}>男</Text>
                 <Image style={styles.arrow} resizeMode={'contain'} source={require('image!next')}></Image>
               </View>
             </TouchableOpacity>
             <TouchableOpacity>
-              <View style={[styles.item, {flexDirection:'row',}]}>
+              <View style={[styles.item, {flexDirection:'row'}]}>
+                <Text style={[styles.font,{flex:1}]}>关注的地区</Text>
+                <Text style={styles.desc}>南京 马鞍山</Text>
+                <Image style={styles.arrow} resizeMode={'contain'} source={require('image!next')}></Image>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this._gotoFeedback}>
+              <View style={[styles.item, {flexDirection:'row',marginTop:15,}]}>
+                <Text style={[styles.font,{flex:1}]}>意见反馈</Text>
+                <Image style={styles.arrow} resizeMode={'contain'} source={require('image!next')}></Image>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View style={[styles.item, {flexDirection:'row'}]}>
+                <Text style={[styles.font,{flex:1}]}>使用帮助</Text>
+                <Image style={styles.arrow} resizeMode={'contain'} source={require('image!next')}></Image>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this._gotoSetting}>
+              <View style={[styles.item, {flexDirection:'row'}]}>
+                <Text style={[styles.font,{flex:1}]}>设置</Text>
+                <Image style={styles.arrow} resizeMode={'contain'} source={require('image!next')}></Image>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View style={[styles.item, {flexDirection:'row'}]}>
                 <Text style={[styles.font,{flex:1}]}>客服热线</Text>
                 <Text style={styles.desc,{marginRight:15,color:'#399bff',}}>400-988-8939</Text>
               </View>
             </TouchableOpacity>
           </View>
-          {quitbtn}
         </ScrollView>
       </View>
     );
@@ -169,6 +197,29 @@ var styles = StyleSheet.create({
     borderBottomColor: '#ddd',
     backgroundColor:'#fff',
     alignItems:'center',
+  },
+  bigitem:{
+    height:70,
+    justifyContent: 'center',
+    borderBottomWidth: Util.pixel,
+    borderBottomColor: '#ddd',
+    backgroundColor:'#fff',
+    alignItems:'center',
+  },
+  avatar:{
+    textAlign:'right',
+    marginRight:31,
+    width:55,
+    height:55,
+    borderRadius:27.5,
+    backgroundColor:'#333',
+  },
+  bigarrow:{
+    position:'absolute',
+    top:30,
+    right:15,
+    width:6,
+    height:11,
   },
   font:{
     fontSize:15,
@@ -218,4 +269,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = Setting;
+module.exports = Info;
