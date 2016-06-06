@@ -1,7 +1,3 @@
-/**
- * Created by vczero on 15/7/12.
- */
-
 import React, { Component } from 'react';
 import Util from './utils';
 import Service from './service';
@@ -33,9 +29,78 @@ var Tingge = React.createClass({
 
     return (
       <View style={styles.bigcontainer}>
+        <View style={styles.content}>
+          <View style={styles.text1}>
+            <Text style={styles.bold1}>月亮代表我的心 - 刘宝仲</Text>
+          </View>
+          <TouchableOpacity onPress={this._gotoSetting} style={styles.settingbtn}>
+            <View style={styles.setting}>
+              <Image style={styles.icon1} resizeMode={'contain'} source={require('image!tingge_share')}></Image>
+            </View>
+          </TouchableOpacity>
+        </View>
         <ScrollView style={styles.container}>
-
+          <View style={styles.toolbar}>
+            <TouchableOpacity style={styles.toolbtn}>
+              <Image style={styles.toolicon} resizeMode={'contain'} source={require('image!meihua')}></Image>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.toolbtn}>
+              <Image style={styles.toolicon} resizeMode={'contain'} source={require('image!yellow_star')}></Image>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.toolbtn}>
+              <Image style={styles.btoolicon} resizeMode={'contain'} source={require('image!b_star')}></Image>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.toolbtn}>
+              <Image style={styles.toolicon} resizeMode={'contain'} source={require('image!b_star')}></Image>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.toolbtn}>
+              <Image style={styles.toolicon} resizeMode={'contain'} source={require('image!tingge_shoucang')}></Image>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.huabian_top}>
+            <Image style={styles.huabianicon} resizeMode={'contain'} source={require('image!huabian_down')}></Image>
+          </View>
+          <View style={styles.fengmianbox}>
+            <Image style={styles.fengmian} resizeMode={'contain'} source={require('image!b_default')}></Image>
+          </View>
+          <View style={styles.huabian_down}>
+            <Image style={styles.huabianicon} resizeMode={'contain'} source={require('image!huabian')}></Image>
+          </View>
+          <View style={styles.infobox}>
+            <View style={styles.leftbox}>
+              <Image style={styles.huabianicon} resizeMode={'contain'} source={require('image!blue_star')}></Image>
+              <View>
+                <Text>1245</Text>
+              </View>
+            </View>
+            <View style={styles.centerbox}>
+              
+            </View>
+            <View style={styles.rightbox}>
+            <Image style={styles.huabianicon} resizeMode={'contain'} source={require('image!shoucang_num')}></Image>
+            <View>
+              <Text>1245</Text>
+            </View>
+            </View>
+          </View>
         </ScrollView>
+        <View style={styles.playbar}>
+          <TouchableOpacity style={styles.playbtn}>
+            <Image style={styles.playicon} resizeMode={'contain'} source={require('image!xunhuan')}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.playbtn}>
+            <Image style={styles.playicon} resizeMode={'contain'} source={require('image!prev')}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.playbtn}>
+            <Image style={styles.bplayicon} resizeMode={'contain'} source={require('image!bofangbtn')}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.playbtn}>
+            <Image style={styles.playicon} resizeMode={'contain'} source={require('image!tingge_next')}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.playbtn}>
+            <Image style={styles.playicon} resizeMode={'contain'} source={require('image!tingge_list')}></Image>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   },
@@ -48,140 +113,97 @@ var styles = StyleSheet.create({
   },
   container:{
     flex:1,
-    marginTop:-5,
+    marginTop:-20,
   },
-  navigatorx:{
-    backgroundColor:'#f3ea85',
-    height:64,
-    paddingTop:20,
-  },
-  city:{
-    flex:1,
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'center',
-    marginTop:10,
-  },
-  citytext:{
-    fontSize:17,
-    fontWeight:'bold',
-    textAlign:'center',
-    marginRight:6,
-  },
-  down:{
-    width:4,
-    height:5,
-  },
-  itemRow:{
-    flexDirection:'row',
-    marginBottom:20,
-  },
-  banner:{
-    flex:1,
-    borderRadius:4,
-    width:Dimensions.get('window').width-30,
-    height:180,
-  },
-  wrapper: {
-    height:180,
-  },
-  slide1: {
+  content: {
+    paddingTop: 15,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-    borderRadius:4,
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:15,
-    height:180,
+    width:Dimensions.get('window').width,
+    backgroundColor:'#000036',
   },
-  slide2: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-    borderRadius:4,
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:15,
-    height:180,
-  },
-  slide3: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-    borderRadius:4,
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:15,
-    height:180,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-  tasklist:{
-    marginTop:15,
-    marginLeft:15,
-    marginRight:15,
-    marginBottom:60,
-  },
-  tasktitlebox:{
+  settingbtn:{
     flex:1,
-  },
-  titleline:{
-    flex:1,
-    color:'#c0c0c0',
-    textAlign:'center',
-    fontSize:12
-  },
-  item:{
-    flex:1,
-    height:180,
-    marginTop:15,
-    alignItems:'center',
-    backgroundColor:'#eee',
-    borderRadius:4,
-  },
-  itemtext:{
     position:'absolute',
-    top:0,
-    left:0,
-    backgroundColor:'rgba(0,0,0,0)',
-    width:Dimensions.get('window').width-30,
-    height:180,
+    justifyContent: 'center',
+    right:10,
+    top:7,
+    width:20,
+    height:50,
+  },
+  setting:{
+
+  },
+  icon1:{
+    flex:1,
+    width:16,
+    height:16,
+  },
+  canceltext:{
+    color:'#666',
+    fontSize:15,
+  },
+  text1: {
+    width:Dimensions.get('window').width,
+    alignItems: 'center',
+  },
+  bold1: {
+    fontSize: 14,
+    color: '#fff',
+  },
+  info1: {
+    fontSize: 12,
+  },
+  playbar:{
+    width:Dimensions.get('window').width,
+    height:70,
+    backgroundColor:'#000',
+    flexDirection:'row',
+    justifyContent:'space-around',
     alignItems:'center',
   },
-  itemimg:{
+  playbtn:{
     flex:1,
-    borderRadius:4,
-    width:Dimensions.get('window').width - 30,
+    alignItems:'center',
+  },
+  playicon:{
+    width:23,
+    height:18,
+  },
+  toolbar:{
+    width:Dimensions.get('window').width,
+    height:40,
+    flexDirection:'row',
+    justifyContent:'space-around',
+    alignItems:'center',
+    backgroundColor:'#000',
+  },
+  toolbtn:{
+    flex:1,
+    alignItems:'center',
+  },
+  toolicon:{
+    width:23,
+    height:18,
+  },
+  huabian_top:{
+    width:Dimensions.get('window').width,
+  },
+  huabian_down:{
+    width:Dimensions.get('window').width,
+  },
+  huabianicon:{
+    width:Dimensions.get('window').width,
+  },
+  fengmianbox:{
+
+  },
+  fengmian:{
+    width:Dimensions.get('window').width,
     height:180,
+    backgroundColor:'#000',
   },
-  itemtitle:{
-    fontSize:15,
-    color:'#fff',
-    textAlign:'center',
-    marginTop:70,
-  },
-  itemprice:{
-    fontSize:12,
-    color:'#fff',
-    textAlign:'center',
-    marginTop:10,
-  },
-  itemnum:{
-    fontSize:12,
-    color:'#fff',
-    textAlign:'center',
-    marginTop:45,
-  },
-  em:{
-    color:'#f0e983',
-  }
 });
 
 module.exports = Tingge;

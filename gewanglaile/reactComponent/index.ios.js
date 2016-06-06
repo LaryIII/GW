@@ -56,6 +56,8 @@ var gewanglaile = React.createClass({
       // barTintColor = '#f9f9f9';
     }
     if(title === '听歌'){
+      display = true;
+      title = '';
       // barTintColor = '#f9f9f9';
     }
     if(title === '发现'){
