@@ -10,6 +10,7 @@ import Place from './faxian/place';
 import Luyinpeng from './faxian/luyinpeng';
 import Jishutie from './faxian/jishutie';
 import Liangge from './faxian/liangge';
+import School from './faxian/school';
 
 import {
   View,
