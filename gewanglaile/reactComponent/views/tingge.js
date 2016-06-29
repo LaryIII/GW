@@ -68,19 +68,21 @@ var Tingge = React.createClass({
           </View>
           <View style={styles.infobox}>
             <View style={styles.leftbox}>
-              <Image style={styles.huabianicon} resizeMode={'contain'} source={require('image!blue_star')}></Image>
-              <View>
-                <Text>1245</Text>
+              <Image style={styles.staricon} resizeMode={'contain'} source={require('image!blue_star')}></Image>
+              <View style={styles.borderbox}>
+                <Text style={styles.bordernum}>1245</Text>
               </View>
             </View>
             <View style={styles.centerbox}>
-              
+              <Text style={styles.nickname}>王力宏</Text>
+              <Image style={styles.avataricon} resizeMode={'contain'} source={require('image!photo')}></Image>
+              <Image style={styles.huabian2icon} resizeMode={'contain'} source={require('image!avatar_huawen')}></Image>
             </View>
             <View style={styles.rightbox}>
-            <Image style={styles.huabianicon} resizeMode={'contain'} source={require('image!shoucang_num')}></Image>
-            <View>
-              <Text>1245</Text>
-            </View>
+              <Image style={styles.shoucangicon} resizeMode={'contain'} source={require('image!shoucang_num')}></Image>
+              <View style={styles.borderbox}>
+                <Text style={styles.bordernum}>1245</Text>
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -204,6 +206,61 @@ var styles = StyleSheet.create({
     height:180,
     backgroundColor:'#000',
   },
+
+  infobox:{
+    flexDirection:'row',
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  leftbox:{
+    marginTop:40,
+    width:Dimensions.get('window').width/3,
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  centerbox:{
+    width:Dimensions.get('window').width/3,
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  rightbox:{
+    marginTop:40,
+    width:Dimensions.get('window').width/3,
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  staricon:{
+
+  },
+  borderbox:{
+    marginTop:10,
+    borderTopWidth:0.5,
+    borderTopColor:'#0033cc',
+    borderBottomWidth:0.5,
+    borderBottomColor:'#0033cc',
+    width:64,
+    paddingTop:5,
+    paddingBottom:5,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  bordernum:{
+    color:'#33ccff',
+    fontSize:12,
+  },
+  nickname:{
+    color:'#ffeeab',
+    fontSize:18,
+  },
+  avataricon:{
+
+  },
+  huabian2icon:{
+
+  },
+  shoucangicon:{
+
+  }
 });
 
 module.exports = Tingge;
