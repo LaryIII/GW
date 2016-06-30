@@ -51,7 +51,7 @@ var gewanglaile = React.createClass({
       // barTintColor = '#f9f9f9';
     }
     if(title === '活动'){
-      // display = true;
+      display = true;
       // title = '';
       // barTintColor = '#f9f9f9';
     }

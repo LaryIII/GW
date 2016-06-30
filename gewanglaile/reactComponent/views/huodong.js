@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import Util from './utils';
 import Service from './service';
+import PublishActivity from './huodong/publishactivity';
+import ActivityDetail from './huodong/activitydetail';
 import {
   View,
   Text,
@@ -29,31 +31,67 @@ var Huodong = React.createClass({
   componentDidMount: function() {
 
   },
-
+  _gotoPublish:function(){
+    this.props.navigator.push({
+      title: '发布活动',
+      component: PublishActivity,
+      navigationBarHidden:false,
+      // backButtonTitle: "返回",
+      // backButtonIcon: require('image!back'),
+      leftButtonTitle: "返回",
+      leftButtonIcon:require('image!back'),
+      onLeftButtonPress: ()=>this.props.navigator.pop(),
+    });
+  },
+  _gotodetail:function(){
+    this.props.navigator.push({
+      title: '活动详情',
+      component: ActivityDetail,
+      navigationBarHidden:false,
+      // backButtonTitle: "返回",
+      // backButtonIcon: require('image!back'),
+      leftButtonTitle: "返回",
+      leftButtonIcon:require('image!back'),
+      onLeftButtonPress: ()=>this.props.navigator.pop(),
+    });
+  },
   render: function(){
-
     return (
       <View style={styles.bigcontainer}>
+        <View style={styles.header}>
+          <View style={styles.leftview}>
+            <TouchableOpacity onPress={this._gotoPublish}>
+              <View style={styles.leftbtn}>
+                <Text style={styles.lefttext}>发布</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.centerview}>
+            <Text style={styles.centertext}>活动</Text>
+          </View>
+        </View>
         <View style={styles.segment}>
           <SegmentedControlIOS values={['全国', '南京','马鞍山']} />
         </View>
         <ScrollView style={styles.container}>
-          <View style={styles.item}>
-            <View style={styles.left}>
-              <Image resizeMode={'contain'} style={styles.itemimg} source={require('./../res/common/ktv.jpg')}>
-                <View style={styles.label}>
-                  <Text style={styles.labeltext}>已发布</Text>
-                </View>
-              </Image>
-              <Text style={styles.num}>30人已报名</Text>
+          <TouchableOpacity onPress={this._gotodetail}>
+            <View style={styles.item}>
+              <View style={styles.left}>
+                <Image resizeMode={'contain'} style={styles.itemimg} source={require('./../res/common/ktv.jpg')}>
+                  <View style={styles.label}>
+                    <Text style={styles.labeltext}>已发布</Text>
+                  </View>
+                </Image>
+                <Text style={styles.num}>30人已报名</Text>
+              </View>
+              <View style={styles.right}>
+                <View style={styles.line}><Text style={[styles.whitetext,{fontSize:15,}]}>南京好声音晋级赛第一场</Text></View>
+                <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!locate_normal')}></Image><Text style={styles.whitetext}>集合:<Text>孵鹰大厦楼下</Text></Text></View>
+                <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!time')}></Image><Text style={styles.whitetext}>时间:<Text>2016年1月1日</Text></Text></View>
+                <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!zuzhizhe')}></Image><Text style={styles.whitetext}>组织者:<Text>刘宝仲</Text></Text></View>
+              </View>
             </View>
-            <View style={styles.right}>
-              <View style={styles.line}><Text style={[styles.whitetext,{fontSize:15,}]}>南京好声音晋级赛第一场</Text></View>
-              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!locate_normal')}></Image><Text style={styles.whitetext}>集合:<Text>孵鹰大厦楼下</Text></Text></View>
-              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!time')}></Image><Text style={styles.whitetext}>时间:<Text>2016年1月1日</Text></Text></View>
-              <View style={styles.line}><Image style={styles.icon} resizeMode={'contain'} source={require('image!zuzhizhe')}></Image><Text style={styles.whitetext}>组织者:<Text>刘宝仲</Text></Text></View>
-            </View>
-          </View>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     );
@@ -64,6 +102,34 @@ var styles = StyleSheet.create({
   bigcontainer:{
     flex:1,
     backgroundColor:'#000154',
+  },
+  header:{
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
+    height:64,
+    backgroundColor:'#000036',
+  },
+  leftview:{
+    position:'absolute',
+    top:30,
+    left:12,
+  },
+  leftbtn:{
+
+  },
+  lefttext:{
+    color:'#e3e242',
+    fontSize:16,
+  },
+  centerview:{
+    position:'absolute',
+    top:30,
+    left:(Dimensions.get('window').width-17*2)/2,
+  },
+  centertext:{
+    fontSize:17,
+    color:'#fff',
   },
   segment:{
     marginTop:5,
