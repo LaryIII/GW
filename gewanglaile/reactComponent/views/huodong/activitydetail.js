@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import Util from './../utils';
 import Service from './../service';
+import ApplyActivity from './applyactivity';
 import {
   View,
   Text,
@@ -29,7 +30,18 @@ var ActivityDetail = React.createClass({
   componentDidMount: function() {
 
   },
-
+  _applyactivity:function(){
+    this.props.navigator.push({
+      title: '活动报名',
+      component: ApplyActivity,
+      navigationBarHidden:false,
+      // backButtonTitle: "返回",
+      // backButtonIcon: require('image!back'),
+      leftButtonTitle: "返回",
+      leftButtonIcon:require('image!back'),
+      onLeftButtonPress: ()=>this.props.navigator.pop(),
+    });
+  },
   render: function(){
     return (
       <View style={styles.bigcontainer}>
@@ -67,8 +79,8 @@ var ActivityDetail = React.createClass({
             <Text style={styles.detailtext}>详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情</Text>
           </View>
         </ScrollView>
-        <TouchableOpacity>
-          <View style={styles.btn}>
+        <TouchableOpacity onPress={this._applyactivity} style={styles.btn}>
+          <View style={styles.btnview}>
             <Text style={styles.btntext}>报名申请</Text>
           </View>
         </TouchableOpacity>
@@ -92,7 +104,6 @@ var styles = StyleSheet.create({
     marginBottom:5,
     marginLeft:30,
     marginRight:30,
-
   },
   bannerimg:{
     width:Dimensions.get('window').width-60,
@@ -160,12 +171,19 @@ var styles = StyleSheet.create({
   },
   btn:{
     position:'absolute',
-    bottom:0,
+    bottom:100,
     left:0,
     height:40,
     backgroundColor:'#fff',
     alignItems:'center',
     justifyContent:'center',
+  },
+  btnview:{
+    backgroundColor:'#fff',
+    alignItems:'center',
+    justifyContent:'center',
+    height:40,
+    width:Dimensions.get('window').width,
   },
   btntext:{
     color:'#fa3354',
