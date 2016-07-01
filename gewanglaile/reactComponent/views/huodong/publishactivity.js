@@ -47,8 +47,10 @@ var PublishActivity = React.createClass({
           <View style={styles.ninputbox}>
             <TextInput style={styles.textinput} placeholderTextColor="rgba(255,255,255,0.5)" placeholder="请输入活动地点" />
           </View>
-          <View style={styles.ninputbox}>
-            <TextInput style={styles.textinput} placeholderTextColor="rgba(255,255,255,0.5)" placeholder="请输入活动人数" />
+          <View style={[styles.ninputbox,{flexDirection:'row'}]}>
+            <TextInput style={styles.textinput1} placeholderTextColor="rgba(255,255,255,0.5)" placeholder="请输入活动人数" />
+            <TextInput style={styles.textinput2} placeholderTextColor="rgba(255,255,255,0.5)" placeholder="活动费用(元/人)" />
+            <View style={styles.centerborder}></View>
           </View>
           <View style={styles.ninputbox}>
             <TextInput style={styles.textinput} placeholderTextColor="rgba(255,255,255,0.5)" placeholder="请输入手机号" />
@@ -135,6 +137,26 @@ var styles = StyleSheet.create({
     fontSize:14,
     color:'rgba(255,255,255,0.5)',
     height:16,
+  },
+  textinput1:{
+    fontSize:14,
+    color:'rgba(255,255,255,0.5)',
+    height:16,
+    width:(Dimensions.get('window').width-60-20-1)/2,
+  },
+  textinput2:{
+    fontSize:14,
+    color:'rgba(255,255,255,0.5)',
+    height:16,
+    width:(Dimensions.get('window').width-60-20-1)/2,
+  },
+  centerborder:{
+    width:1,
+    backgroundColor:'#fff',
+    height:36,
+    position:'absolute',
+    top:0,
+    left:(Dimensions.get('window').width-60-20-1)/2,
   },
   datebox:{
     marginTop:2,
