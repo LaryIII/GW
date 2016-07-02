@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import Util from './../utils';
 import Service from './../service';
+import JishutieDetail from './jishutiedetail';
 import {
   View,
   Text,
@@ -29,21 +30,34 @@ var Jishutie = React.createClass({
   componentDidMount: function() {
 
   },
-
+  _gotodetail:function(){
+    this.props.navigator.push({
+      title: '技术贴详情',
+      component: JishutieDetail,
+      navigationBarHidden:true,
+      // backButtonTitle: "返回",
+      // backButtonIcon: require('image!back'),
+      leftButtonTitle: "返回",
+      leftButtonIcon:require('image!back'),
+      onLeftButtonPress: ()=>this.props.navigator.pop(),
+    });
+  },
   render: function(){
     return (
       <View style={styles.bigcontainer}>
         <ScrollView style={styles.container}>
-          <View style={styles.item}>
-            <View style={styles.left}>
-              <Image resizeMode={'contain'} style={styles.itemimg} source={require('./../../res/common/ktv.jpg')}>
-              </Image>
+          <TouchableOpacity onPress={this._gotodetail}>
+            <View style={styles.item}>
+              <View style={styles.left}>
+                <Image resizeMode={'contain'} style={styles.itemimg} source={require('./../../res/common/ktv.jpg')}>
+                </Image>
+              </View>
+              <View style={styles.right}>
+                <View style={styles.line}><Text style={[styles.whitetext,{fontSize:15,}]}>KTV与录音棚的区别</Text></View>
+                <View style={styles.line}><Text style={[styles.whitetext,{marginTop:-10,}]}>进录音棚录音与在KTV唱歌是不同的，与在舞台现场演出也是不同的。在KTV演唱时</Text></View>
+              </View>
             </View>
-            <View style={styles.right}>
-              <View style={styles.line}><Text style={[styles.whitetext,{fontSize:15,}]}>KTV与录音棚的区别</Text></View>
-              <View style={styles.line}><Text style={[styles.whitetext,{marginTop:-10,}]}>进录音棚录音与在KTV唱歌是不同的，与在舞台现场演出也是不同的。在KTV演唱时</Text></View>
-            </View>
-          </View>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     );

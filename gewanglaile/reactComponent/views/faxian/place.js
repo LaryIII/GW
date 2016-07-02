@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import Util from './../utils';
 import Service from './../service';
+import PlaceDetail from './placedetail';
 import {
   View,
   Text,
@@ -29,23 +30,35 @@ var Place = React.createClass({
   componentDidMount: function() {
 
   },
-
+  _gotodetail:function(){
+    this.props.navigator.push({
+      title: '御品周庄',
+      component: PlaceDetail,
+      navigationBarHidden:false,
+      // backButtonTitle: "返回",
+      // backButtonIcon: require('image!back'),
+      leftButtonTitle: "返回",
+      leftButtonIcon:require('image!back'),
+      onLeftButtonPress: ()=>this.props.navigator.pop(),
+    });
+  },
   render: function(){
-
     return (
       <View style={styles.bigcontainer}>
         <ScrollView style={styles.container}>
-          <View style={styles.item}>
-            <View style={styles.left}>
-              <Image resizeMode={'contain'} style={styles.itemimg} source={require('./../../res/common/ktv.jpg')}>
-              </Image>
+          <TouchableOpacity onPress={this._gotodetail}>
+            <View style={styles.item}>
+              <View style={styles.left}>
+                <Image resizeMode={'contain'} style={styles.itemimg} source={require('./../../res/common/ktv.jpg')}>
+                </Image>
+              </View>
+              <View style={styles.right}>
+                <View style={styles.line}><Text style={[styles.whitetext,{fontSize:15,marginTop:6,}]}>餐饮 - 御品周庄</Text></View>
+                <View style={styles.line}><Text style={styles.whitetext}>电话:<Text>025-88886666</Text></Text></View>
+                <View style={styles.line}><Text style={[styles.whitetext,{marginTop:-10,}]}>地址:<Text>秦淮区苜蓿园后标营88号</Text></Text></View>
+              </View>
             </View>
-            <View style={styles.right}>
-              <View style={styles.line}><Text style={[styles.whitetext,{fontSize:15,marginTop:6,}]}>餐饮 - 御品周庄</Text></View>
-              <View style={styles.line}><Text style={styles.whitetext}>电话:<Text>025-88886666</Text></Text></View>
-              <View style={styles.line}><Text style={[styles.whitetext,{marginTop:-10,}]}>地址:<Text>秦淮区苜蓿园后标营88号</Text></Text></View>
-            </View>
-          </View>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     );
