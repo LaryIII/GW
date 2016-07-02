@@ -3,10 +3,8 @@
  */
 
 import React, { Component } from 'react';
-import Util from './utils';
-import Service from './service';
-import TinggeDetail from './tingge/tinggedetail';
-import More from './tingge/more';
+import Util from './../utils';
+import Service from './../service';
 import {
   View,
   Text,
@@ -22,7 +20,7 @@ import {
   SegmentedControlIOS,
 } from 'react-native';
 
-var Tingge = React.createClass({
+var More = React.createClass({
   getInitialState: function(){
     return {
 
@@ -31,57 +29,11 @@ var Tingge = React.createClass({
   componentDidMount: function() {
 
   },
-  _gotomore:function(){
-    this.props.navigator.push({
-      title: '更多',
-      component: More,
-      navigationBarHidden:false,
-      // backButtonTitle: "返回",
-      // backButtonIcon: require('image!back'),
-      leftButtonTitle: "返回",
-      leftButtonIcon:require('image!back'),
-      onLeftButtonPress: ()=>this.props.navigator.pop(),
-    });
-  },
-  _gotodetail:function(){
-    this.props.navigator.push({
-      title: '',
-      component: TinggeDetail,
-      navigationBarHidden:true,
-      // backButtonTitle: "返回",
-      // backButtonIcon: require('image!back'),
-      leftButtonTitle: "返回",
-      leftButtonIcon:require('image!back'),
-      onLeftButtonPress: ()=>this.props.navigator.pop(),
-    });
-  },
   render: function(){
     return (
       <View style={styles.bigcontainer}>
-        <View style={styles.header}>
-          <View style={styles.leftview}>
-            <TouchableOpacity onPress={this._gotoPublish}>
-              <View style={styles.leftbtn}>
-                <Image style={styles.down} resizeMode={'contain'} source={require('image!xiala2')}></Image>
-                <Text style={styles.lefttext}>南京</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.centerview}>
-            <Text style={styles.centertext}>听歌</Text>
-          </View>
-        </View>
         <View style={styles.segment}>
-          <SegmentedControlIOS style={styles.sex} values={['男声', '女声']} />
-          <SegmentedControlIOS style={styles.map} values={['南京', '马鞍山', '附近']} />
-        </View>
-        <View style={styles.segment}>
-          <SegmentedControlIOS momentary={true} style={styles.category} values={['心榜', '星榜', '悦榜', '酷榜', '更多']} onValueChange={(index)=>{
-            console.log(index);
-            if(index=="更多"){
-              this._gotomore();
-            }
-          }} />
+          <SegmentedControlIOS style={styles.category} values={['最新', '歌名', '贵宾', '导演', '艺名']} />
         </View>
         <ScrollView style={styles.container}>
           <TouchableOpacity onPress={this._gotodetail}>
@@ -192,4 +144,4 @@ var styles = StyleSheet.create({
 
 });
 
-module.exports = Tingge;
+module.exports = More;
